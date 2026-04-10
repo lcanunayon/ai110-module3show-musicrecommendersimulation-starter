@@ -18,7 +18,9 @@ Replace this paragraph with your own summary of what your version does.
 ## How The System Works
 
 Explain your design in plain language.
-Real world recommendations work by comparing 2 different attributes to items, one comparison is through each user and what they also like. This is compared to everybody else. The other way it works is by comparing the actual song attributes to different ones, and these 2 comparisons are merged together to form the recommendation system. What my system will do is score songs by their attributes and similarities, and scores that are close together are songs that are going to be recommended along with another song. It score based on attributes like mood, genre, dancibility, etc. The separation of scoring songs and ranking  songs together are separated so that each implementation can be worked on individually. User profile store a score for each song, and compares songs to the users targets which are stored here as well. Choosing a song to recommend, we call score_song for every song in the catalog, sort the songs by descending score order, and return the top k songs.
+Real world recommendations work by comparing 2 different attributes to items, one comparison is through each user and what they also like. This is compared to everybody else. The other way it works is by comparing the actual song attributes to different ones, and these 2 comparisons are merged together to form the recommendation system. What my system will do is score songs by their attributes and similarities, and scores that are close together are songs that are going to be recommended along with another song. It score based on attributes like mood, genre, dancibility, etc. The separation of scoring songs and ranking  songs together are separated so that each implementation can be worked on individually. User profile store a score for each song, and compares songs to the users targets which are stored here as well. Choosing a song to recommend, we call score_song for every song in the catalog, sort the songs by descending score order, and return the top k songs. For the algorithm plan, we want data from the users profile and songs profile to compare and score itself over each other, some attributes more than others, and sort the list and return the first 5. Some biases I expect happening is that the system may prioritize numerical values, as it constitutes 60% weight of the scoring done.
+
+![Terminal output showing top 4 recommendations](assets/screenshot.jpg)
 
 
 Some prompts to answer:
@@ -119,7 +121,7 @@ Give your recommender a name, for example:
 
 > VibeFinder 1.0
 
----
+Music4u 1.0
 
 ## 2. Intended Use
 
@@ -130,9 +132,11 @@ Example:
 
 > This model suggests 3 to 5 songs from a small catalog based on a user's preferred genre, mood, and energy level. It is for classroom exploration only, not for real users.
 
----
+This recomender system suggests about 5 songs from a selection based off users preferred genre, mood, energy, etc. It is mostly for classroom purposes, not for real users.
 
 ## 3. How It Works (Short Explanation)
+
+
 
 Describe your scoring logic in plain language.
 
@@ -142,7 +146,7 @@ Describe your scoring logic in plain language.
 
 Try to avoid code in this section, treat it like an explanation to a non programmer.
 
----
+The algorithm works by scoring songs based on a users preferred song profile and songs with their attributes. It ranks these songs and their score based on how close they are to the users preferrences, and sorts all of these songs in descending order of score. The top k (usually 5) songs are picked and recommended to the user.
 
 ## 4. Data
 

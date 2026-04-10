@@ -19,8 +19,8 @@ def main() -> None:
     # Full taste profile — target values used for similarity scoring
     user_prefs = {
         # Categorical preferences (used for bonus matching, not distance math)
-        "favorite_genre": "hip-hop",
-        "favorite_mood":  "hype",
+        "favorite_genre": "pop",
+        "favorite_mood":  "happy",
 
         # Numeric targets (0.0 – 1.0 scale, used in score_song distance formula)
         "target_energy":       0.85,  # high energy — prefers upbeat, driving songs
@@ -34,14 +34,18 @@ def main() -> None:
 
     recommendations = recommend_songs(user_prefs, songs, k=5)
 
-    print("\nTop recommendations:\n")
-    for rec in recommendations:
-        # You decide the structure of each returned item.
-        # A common pattern is: (song, score, explanation)
-        song, score, explanation = rec
-        print(f"{song['title']} - Score: {score:.2f}")
-        print(f"Because: {explanation}")
-        print()
+    print("\n" + "=" * 50)
+    print(f"  Top {len(recommendations)} Recommendations")
+    print(f"  Genre: {user_prefs['favorite_genre']}  |  Mood: {user_prefs['favorite_mood']}")
+    print("=" * 50)
+
+    for rank, (song, score, explanation) in enumerate(recommendations, start=1):
+        print(f"\n#{rank}  {song['title']}  —  {song['artist']}")
+        print(f"    Score  : {score:.2f} / 7.50")
+        print(f"    Genre  : {song['genre']}  |  Mood: {song['mood']}")
+        print(f"    Why    : {explanation}")
+
+    print("\n" + "=" * 50)
 
 
 if __name__ == "__main__":
